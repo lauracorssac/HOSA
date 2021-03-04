@@ -8,11 +8,21 @@ We describe now the recipe of how to use HOSA.
 
 ## Ingredients
 
+### Hardware
+
 - **1 Raspberry Pi**: We use a Raspberry Pi Model B+, to which the camera and the buzzer are attached.
 - **1 Camera**: We use a camera of the brand Sain Smart.
 - **1 Buzzer**: The buzzer works as the alarm sound. The model we used LK-Buzzer, from the brand Linkerkit.
 - **1 iPhone**: For the user to interact with the system, we created an iOS mobile application. For this reason, we need an Apple’s smartphone.
+
+### Sofware
+
 - **1 Virtual Machine**
+
+### Accounts
+
+- **Account in Heroku** (Free)
+- **Apple Developer Account** (U$ 99/ year)
 
 ## Directions
 
@@ -35,10 +45,84 @@ In the _Key Pairs_ tab, register the pulic and private RSA key of your VM.
 In the _Devices_ tab, register your VM and your Rapspberry Pi. The VM must be linked to its key pair, which you just created. For the creation of the Raspberry Pi, this information don't need to be provided.
 3. **Extraction/Control Operators**: In the _Extraction/Control Operators_ tab, we register four items:
 
-**- Buzzer Operator:**
-1. Open the _Buzzer Operator_ folder of this repo (PATH here). 
-2. In the `mbp_client.py` file, change the value of the `YOUR_VM_IP` variable to be the IP of your VM.
-3. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts:_ section, you must upload all the files inside _Buzzer Operator_ folder. Note that you can't select folders!
+<details>
+  <summary>Buzzer Operator</summary>
+
+  1. Open the _Buzzer Operator_ folder of this repo (PATH here). 
+
+  2. In the `mbp_client.py` file, change the value of the `YOUR_VM_IP` variable to be the IP of your VM.
+
+  3. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _Buzzer Operator_ folder. Note that you can't select folders!
+</details>
+
+<details>
+  <summary>Camera Operator</summary>
+
+  1. Open the _Camera Operator_ folder of this repo (PATH here). 
+
+  2. In the `TokenValidationManager.py` file, change the value of the `YOUR_HEROKU_URL` variable to be the URL of your webserver hosted in Heroku.
+
+  3. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _Camera Operator_ folder.
+</details>
+
+<details>
+  <summary>Notification Operator</summary>
+
+  1. Open the _Notification Operator_ folder of this repo (PATH here). 
+
+  2. In the `NotificationManager.py` file, change the value of the `HOST` variable to be the IP of your VM. Change the `BUNDLE_ID` and `TEAM_ID` to be the your's Apple Developer information. Both Bundle ID and Team ID can be found in the `Signing and Capabilities` tab in Xcode. Change also the `DEVICE_TOKEN` variable to be the token of your iPhone. When you run the application, this value will be printed by the following function in your `AppDelegate.swift` file.
+
+```swift
+func application( _ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+  let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+  let token = tokenParts.joined()
+  print("Device Token: \(token)")
+}
+```
+  3. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _Notification Operator_ folder.
+</details>
+
+<details>
+  <summary>Buzzer Commands Operator</summary>
+
+  1. Open the _Buzzer Commands Operator_ folder of this repo (PATH here). 
+
+  2. In the `TokenValidationManager.py` file, change the value of the `YOUR_HEROKU_URL` variable to be the URL of your webserver hosted in Heroku.
+
+  3. In the `NotificationManager.py` file, change the value of the `HOST` variable to be the IP of your VM. Change the `BUNDLE_ID` and `TEAM_ID` to be the your's Apple Developer information. Both Bundle ID and Team ID can be found in the `Signing and Capabilities` tab in Xcode. Change also the `DEVICE_TOKEN` variable to be the token of your iPhone. When you run the application, this value will be printed by the following function in your `AppDelegate.swift` file.
+
+```swift
+func application( _ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+  let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+  let token = tokenParts.joined()
+  print("Device Token: \(token)")
+}
+```
+
+  4. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _Buzzer Commands Operator_ folder.
+
+</details>
+
+<details>
+  <summary>System Commands Operator</summary>
+
+  1. Open the _System Commands Operator_ folder of this repo (PATH here). 
+
+  2. In the `TokenValidationManager.py` file, change the value of the `YOUR_HEROKU_URL` variable to be the URL of your webserver hosted in Heroku.
+
+  3. In the `NotificationManager.py` file, change the value of the `HOST` variable to be the IP of your VM. Change the `BUNDLE_ID` and `TEAM_ID` to be the your's Apple Developer information. Both Bundle ID and Team ID can be found in the `Signing and Capabilities` tab in Xcode. Change also the `DEVICE_TOKEN` variable to be the token of your iPhone. When you run the application, this value will be printed by the following function in your `AppDelegate.swift` file.
+
+```swift
+func application( _ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+  let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+  let token = tokenParts.joined()
+  print("Device Token: \(token)")
+}
+```
+
+  4. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _System Commands Operator_ folder.
+
+</details>
 
 4. **Sensors:** In the 
 
