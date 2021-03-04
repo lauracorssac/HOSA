@@ -39,11 +39,12 @@ We describe now the recipe of how to use HOSA.
 
 For the management of the elements and the connections between them, we used the MBP IoT platform. It is also a open-source platform, whose source code can be found in https://github.com/IPVS-AS/MBP . In the repository you can also found the tutorial of how to use it. After deploying the platform in your machine, creating an account and logging in, you must register the following components in the following order.
 
-1. **Key Pairs**:
+#### 2.1. **Key Pairs**:
 In the _Key Pairs_ tab, register the pulic and private RSA key of your VM.
-2. **Devices**:
+#### 2.2. **Devices**:
 In the _Devices_ tab, register your VM and your Rapspberry Pi. The VM must be linked to its key pair, which you just created. For the creation of the Raspberry Pi, this information don't need to be provided.
-3. **Extraction/Control Operators**: In the _Extraction/Control Operators_ tab, we register four items:
+#### 2.3. **Extraction/Control Operators**: 
+In the _Extraction/Control Operators_ tab, we register the following five items. For all of them, the field "Parameters" should be left empty and the field "Unit" should have the value "No Unit".
 
 <details>
   <summary>Buzzer Operator</summary>
@@ -124,12 +125,146 @@ func application( _ application: UIApplication, didRegisterForRemoteNotification
 
 </details>
 
-4. **Sensors:** In the 
+#### 2.4. **Sensors:** 
+In the _Sensors_ tab, you must register the following three items.
+<details>
+  <summary>Camera Sensor</summary>
 
-5. **Actuators**:
+  * The _Sensor Type_ should be _Camera_
 
-6. **Rules**:
+  * The _Extraction Operator_ should be the _Camera Operator_
 
+  * The _Device_ should be the Raspberry Pi
+</details>
+<details>
+  <summary>System Commands Sensor</summary>
+
+  * The _Sensor Type_ should be _Touch_
+
+  * The _Extraction Operator_ should be the _System Commands Operator_
+
+  * The _Device_ should be the VM
+</details>
+<details>
+  <summary>Buzzer Commands Sensor</summary>
+  
+  * The _Sensor Type_ should be _Touch_
+
+  * The _Extraction Operator_ should be the _Buzzer Commands Operator_
+
+  * The _Device_ should be the VM
+</details>
+
+#### 2.5. **Actuators**: 
+In the _Actuators_ tab, you must register the following two items.
+
+<details>
+  <summary>Notification Actuator</summary>
+  
+  * The _Actuator Type_ may be _Vibration_
+
+  * The _Control Operator_ should be the _Notification Operator_
+
+  * The _Device_ should be the VM
+</details>
+
+<details>
+  <summary>Buzzer Actuator</summary>
+  
+  * The _Actuator Type_ may be _Buzzer_
+
+  * The _Control Operator_ should be the _Buzzer Operator_
+
+  * The _Device_ should be the Raspberry Pi
+</details>
+
+#### 2.6. **Rules**: 
+The _Rules_ tab is divided in three sub-tabs:
+
+#### 2.6.1. **Rule Actions**: 
+
+In the _Rule Actions_ tab, you must register the following two items.
+
+<details>
+  <summary>Buzzer Action</summary>
+  
+  * For _Action Type_ select _Actuator Action_
+
+  * For _Actuator_ select _Buzzer Actuator_
+
+  * For _suffix_ type "action"
+</details>
+
+<details>
+  <summary>Notification Action</summary>
+  
+  * For _Action Type_ select _Actuator Action_
+
+  * For _Actuator_ select _Notification Actuator_
+
+  * For _suffix_ type "action"
+</details>
+
+#### 2.6.2. **Rule Conditions**: 
+
+In the _Rule Conditions_ tab, you must register the following two items.
+
+<details>
+  <summary>Camera + System Commands</summary>
+  
+  * Name it Camera + System Commands. Proceed;
+  
+  * Drag the _Camera_ and the _System Commands_ sensors to the indicated place and add an _or_ Operator between them; Proceed;
+
+  * Make sure the pattern is 
+
+```
+SELECT * FROM pattern [every (
+event_0= <camera_sensor_ID> OR 
+event_1= <system_commands_sensor_ID>
+)]
+```
+</details>
+
+<details>
+  <summary> Camera + System Commands + Buzzer Commands</summary>
+  
+  * Name it Camera + System Commands + Buzzer Commands. Proceed;
+  
+  * Drag the _Camera_, the _System Commands_, and the _Buzzer Commands_ sensors to the indicated place and add two _or_ Operators between them; Proceed;
+
+  * Make sure the pattern is 
+
+```
+SELECT * FROM pattern [every (
+event_0= <camera_sensor_ID> OR 
+event_1= <system_commands_sensor_ID> OR
+event_2= <buzzer_commands_sensor_ID>
+)]
+```
+</details>
+
+#### 2.6.3. **Rule Definitions**: 
+
+In the _Rule Definitions_ tab, you must register the following two items.
+
+<details>
+  <summary> Camera + System Commands -> Notification</summary>
+  
+  * For _Condition_ select _Camera + System Commands_
+
+  * For _Action_ select _Notification Action_
+
+</details>
+
+<details>
+  <summary> Camera + System Commands + Buzzer Commands -> Buzzer</summary>
+  
+  * For _Condition_ select _Camera + System Commands + Buzzer Commands_
+
+  * For _Action_ select _Buzzer Action_
+
+</details>
 
 ## Publications
 None yet. :( We hope to have one soon though. 
