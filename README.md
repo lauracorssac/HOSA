@@ -23,6 +23,7 @@ We describe now the recipe of how to use HOSA.
 
 - **Account in Heroku** (Free)
 - **Apple Developer Account** (U$ 99/ year)
+  This is necessary because HOSA iOS app uses Universal Links and Push Notifications.
 
 ## Directions
 
@@ -34,6 +35,35 @@ We describe now the recipe of how to use HOSA.
 
 1.3 - Enable the Camera:
 `sudo raspi-config` -> Interfacing Options -> Camera -> Yes
+
+### 2. The Heroku Platform
+
+We created a server for handling all the requests related to the token generation feature. It is hosted in the cloud platform Heroku and enables the persistent storage of all tokens. We chose to use Heroku for the facility to deploy a webserver using HTTPS. This protocol is necessary for enabling Universal Links.
+
+- Create an account in https://www.heroku.com/ in case you don't have it yet.
+- Install Heroku in your local machine following the official guide in https://devcenter.heroku.com/articles/heroku-cli#download-and-install
+- Go to the location of `Authorization` folder of this repository in your local machine. 
+- Go to the file `apple-app-site-association` and change the `appID` key's value to be team-ID.bundle-ID of your mobile application. It will be something as `"HXBS8U8294.johnAppleseed.Hosa"`. Your team ID and Bundle Identifier you can find in the `Signing and Capabilities` tab of HOSA's mobile application. This step is necessary to enable the Universal Links.
+- Deploy it to Heroku with Git. You can follow the tutorial in https://devcenter.heroku.com/articles/git
+- If you execute `git remote -v` command in the terminal in the same folder, you should obtain something like 
+  `xxxxx    https://git.heroku.com/hidden-sea-1234.git (fetch)`
+  
+  The part between the .com/ and .git is the ID of your server. In the following steps, we are going to need your Heroku's domain name, which is its ID followed by `.herokuapp.com`, such as `hidden-sea-1234.herokuapp.com`.
+
+
+### 2. The iOS Platform
+
+In order to allow the users to control HOSA and access its state, we built an iOS mobile application. Execute the following steps in order to use it.
+
+- 2.1. Clone the source repository to your machine - (LINK TO THE REPOSITORY)
+
+- 2.2. In the file `DataManager.swift` change the variable `raspberryIP` to be the IP of your Raspberry Pi. Change `vmIP` to be the IP of your VM and `herokuPath` to be your heroku domain name.
+
+- 2.3. In order to allow the Universal Linking to take place, go to the `Signing and Capabilities` tab of your XCode project and in the `Associated Domains` capability, add something like the following:
+
+  `applinks:your-heroku-domain`
+
+  Note you must replace `your-heroku-domain` by your actual Heroku domain, which is something like `hidden-sea-1234.herokuapp.com`
 
 ### 2. In the MBP IoT Platform
 
