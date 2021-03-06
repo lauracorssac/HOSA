@@ -1,0 +1,6 @@
+# Python packages required for ServerMain.py
+hyper
+cryptography
+pyjwt
+paho-mqtt
+requests
