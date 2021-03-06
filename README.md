@@ -82,16 +82,6 @@ In the _Devices_ tab, register your VM and your Rapspberry Pi. The VM must be li
 In the _Extraction/Control Operators_ tab, we register the following five items. For all of them, the field "Parameters" should be left empty and the field "Unit" should have the value "No Unit".
 
 <details>
-  <summary>Buzzer Operator</summary>
-
-  1. Open the _Buzzer Operator_ folder of this repo (PATH here). 
-
-  2. In the `mbp_client.py` file, change the value of the `YOUR_VM_IP` variable to be the IP of your VM.
-
-  3. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _Buzzer Operator_ folder. Note that you can't select folders!
-</details>
-
-<details>
   <summary>Camera Operator</summary>
 
   1. Open the _Camera Operator_ folder of this repo (PATH here). 
@@ -102,30 +92,13 @@ In the _Extraction/Control Operators_ tab, we register the following five items.
 </details>
 
 <details>
-  <summary>Notification Operator</summary>
-
-  1. Open the _Notification Operator_ folder of this repo (PATH here). 
-
-  2. In the `NotificationManager.py` file, change the value of the `HOST` variable to be the IP of your VM. Change the `BUNDLE_ID` and `TEAM_ID` to be the your's Apple Developer information. Both Bundle ID and Team ID can be found in the `Signing and Capabilities` tab in Xcode. Change also the `DEVICE_TOKEN` variable to be the token of your iPhone. When you run the application, this value will be printed by the following function in your `AppDelegate.swift` file.
-
-```swift
-func application( _ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-  let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-  let token = tokenParts.joined()
-  print("Device Token: \(token)")
-}
-```
-  3. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _Notification Operator_ folder.
-</details>
-
-<details>
   <summary>Buzzer Commands Operator</summary>
 
-  1. Open the _Buzzer Commands Operator_ folder of this repo (PATH here). 
+  1. Open the _Buzzer Commands Operator_ folder of this repo (PATH here);
 
-  2. In the `TokenValidationManager.py` file, change the value of the `YOUR_HEROKU_URL` variable to be the URL of your webserver hosted in Heroku.
+  2. In the `TokenValidationManager.py` file, change the value of the `YOUR_HEROKU_URL` variable to be the URL of your webserver hosted in Heroku;
 
-  3. In the `NotificationManager.py` file, change the value of the `HOST` variable to be the IP of your VM. Change the `BUNDLE_ID` and `TEAM_ID` to be the your's Apple Developer information. Both Bundle ID and Team ID can be found in the `Signing and Capabilities` tab in Xcode. Change the `APNS_KEY_ID` to be the Key ID generated in (XX). Change `APNS_AUTH_KEY_PATH` to be the full name of your key. Something like `AuthKey_4SVKWF123R.p8`. Change also the `DEVICE_TOKEN` variable to be the token of your iPhone. When you run the application, this value will be printed by the following function in your `AppDelegate.swift` file.
+  3. In the `NotificationManager.py` file, change the value of the `HOST` variable to be the IP of your VM. Change the `BUNDLE_ID` and `TEAM_ID` to be the your's Apple Developer information. Both Bundle ID and Team ID can be found in the `Signing and Capabilities` tab in Xcode. Change the `APNS_KEY_ID` to be the Key ID generated in (XX). Change `APNS_AUTH_KEY_PATH` to be the full name of your key. Something like `AuthKey_4SVKWF123R.p8`. Change also the `DEVICE_TOKEN` variable to be the token of your iPhone. When you run the application, this value will be printed by the following function in your `AppDelegate.swift` file;
 
 ```swift
 func application( _ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -134,7 +107,7 @@ func application( _ application: UIApplication, didRegisterForRemoteNotification
   print("Device Token: \(token)")
 }
 ````
-  4. Place your `.p8` certificate (generated in xX) in this folder. 
+  4. Place your `.p8` certificate (generated in xX) in this folder;
 
   5. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _Buzzer Commands Operator_ folder.
 
@@ -143,13 +116,34 @@ func application( _ application: UIApplication, didRegisterForRemoteNotification
 <details>
   <summary>System Commands Operator</summary>
 
-  1. Open the _System Commands Operator_ folder of this repo (PATH here).
+  1. Open the _System Commands Operator_ folder of this repo (PATH here);
   
-  2. Follow steps 2, 3 and 4 of Buzzer Commands Operator.
+  2. Follow steps 2, 3 and 4 of _Buzzer Commands Operator_;
 
   3. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _System Commands Operator_ folder.
 
 </details>
+
+<details>
+  <summary>Notification Operator</summary>
+
+  1. Open the _Notification Operator_ folder of this repo (PATH here);
+
+  2. Follow the steps 2,3 and 4 of the _Buzzer Commands Operator_;
+
+  3. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _Notification Operator_ folder.
+</details>
+
+<details>
+  <summary>Buzzer Operator</summary>
+
+  1. Open the _Buzzer Operator_ folder of this repo (PATH here). 
+
+  2. In the `mbp_client.py` file, change the value of the `YOUR_VM_IP` variable to be the IP of your VM.
+
+  3. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _Buzzer Operator_ folder. Note that you can't select folders!
+</details>
+
 
 #### 2.4. **Sensors:** 
 In the _Sensors_ tab, you must register the following three items.
