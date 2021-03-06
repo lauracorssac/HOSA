@@ -50,8 +50,7 @@ We created a server for handling all the requests related to the token generatio
   
   The part between the .com/ and .git is the ID of your server. In the following steps, we are going to need your Heroku's domain name, which is its ID followed by `.herokuapp.com`, such as `hidden-sea-1234.herokuapp.com`.
 
-
-### 2. The iOS Platform
+### 3. The iOS Platform
 
 In order to allow the users to control HOSA and access its state, we built an iOS mobile application. Execute the following steps in order to use it.
 
@@ -71,7 +70,7 @@ In order to allow the users to control HOSA and access its state, we built an iO
   * Select Apple Push Notifications service (APNs) to enable it and name it something like "Push Notification Key".
   * Then, continue and you will have your `.p8` certificate, which you can download to use it later. It will have a name like `AuthKey_4SVKWF123R.p8`. The 4SVKWF123R part of the file name is the Key ID. You’ll also need this. More information you can find in this tutorial: https://www.raywenderlich.com/11395893-push-notifications-tutorial-getting-started
 
-### 2. In the MBP IoT Platform
+### 4. In the MBP IoT Platform
 
 For the management of the elements and the connections between them, we used the MBP IoT platform. It is also a open-source platform, whose source code can be found in https://github.com/IPVS-AS/MBP . In the repository you can also found the tutorial of how to use it. After deploying the platform in your machine, creating an account and logging in, you must register the following components in the following order.
 
@@ -291,7 +290,4 @@ In the _Rule Definitions_ tab, you must register the following two items.
 
   * For _Action_ select _Buzzer Action_
 
-</details>
-
-## Publications
-None yet. :( We hope to have one soon though. 
+</details> 
