@@ -64,6 +64,12 @@ In order to allow the users to control HOSA and access its state, we built an iO
   `applinks:your-heroku-domain`
 
   Note you must replace `your-heroku-domain` by your actual Heroku domain, which is something like `hidden-sea-1234.herokuapp.com`
+  
+- 2.4. Generate a `.p8` certificate to allow sending push notifications to a real device and also silent push notifications. To do so, head over to Apple Developer Member Center and log in. 
+  * There, go to Certificates, Identifiers & Profiles and then Keys. 
+  * Tap the plus button to generate a new key.
+  * Select Apple Push Notifications service (APNs) to enable it and name it something like "Push Notification Key".
+  * Then, continue and you will have your `.p8` certificate, which you can download to use it later. It will have a name like `AuthKey_4SVKWF123R.p8`. The 4SVKWF123R part of the file name is the Key ID. You’ll also need this. More information you can find in this tutorial: https://www.raywenderlich.com/11395893-push-notifications-tutorial-getting-started
 
 ### 2. In the MBP IoT Platform
 
@@ -120,7 +126,7 @@ func application( _ application: UIApplication, didRegisterForRemoteNotification
 
   2. In the `TokenValidationManager.py` file, change the value of the `YOUR_HEROKU_URL` variable to be the URL of your webserver hosted in Heroku.
 
-  3. In the `NotificationManager.py` file, change the value of the `HOST` variable to be the IP of your VM. Change the `BUNDLE_ID` and `TEAM_ID` to be the your's Apple Developer information. Both Bundle ID and Team ID can be found in the `Signing and Capabilities` tab in Xcode. Change also the `DEVICE_TOKEN` variable to be the token of your iPhone. When you run the application, this value will be printed by the following function in your `AppDelegate.swift` file.
+  3. In the `NotificationManager.py` file, change the value of the `HOST` variable to be the IP of your VM. Change the `BUNDLE_ID` and `TEAM_ID` to be the your's Apple Developer information. Both Bundle ID and Team ID can be found in the `Signing and Capabilities` tab in Xcode. Change the `APNS_KEY_ID` to be the Key ID generated in (XX). Change also the `DEVICE_TOKEN` variable to be the token of your iPhone. When you run the application, this value will be printed by the following function in your `AppDelegate.swift` file.
 
 ```swift
 func application( _ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -128,30 +134,21 @@ func application( _ application: UIApplication, didRegisterForRemoteNotification
   let token = tokenParts.joined()
   print("Device Token: \(token)")
 }
-```
+````
+  4. Place your `.p8` certificate (generated in xX) in this folder. 
 
-  4. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _Buzzer Commands Operator_ folder.
+  5. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _Buzzer Commands Operator_ folder.
 
 </details>
 
 <details>
   <summary>System Commands Operator</summary>
 
-  1. Open the _System Commands Operator_ folder of this repo (PATH here). 
+  1. Open the _System Commands Operator_ folder of this repo (PATH here).
+  
+  2. Follow steps 2, 3 and 4 of Buzzer Commands Operator.
 
-  2. In the `TokenValidationManager.py` file, change the value of the `YOUR_HEROKU_URL` variable to be the URL of your webserver hosted in Heroku.
-
-  3. In the `NotificationManager.py` file, change the value of the `HOST` variable to be the IP of your VM. Change the `BUNDLE_ID` and `TEAM_ID` to be the your's Apple Developer information. Both Bundle ID and Team ID can be found in the `Signing and Capabilities` tab in Xcode. Change also the `DEVICE_TOKEN` variable to be the token of your iPhone. When you run the application, this value will be printed by the following function in your `AppDelegate.swift` file.
-
-```swift
-func application( _ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-  let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-  let token = tokenParts.joined()
-  print("Device Token: \(token)")
-}
-```
-
-  4. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _System Commands Operator_ folder.
+  3. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _System Commands Operator_ folder.
 
 </details>
 
