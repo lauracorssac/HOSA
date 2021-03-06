@@ -2,7 +2,7 @@
 
 ## Abstract
 
-We introduce the Smart Home Security Assistant(HOSA), which uses image recognition AI models to detect the presence ofintruders in the users’ homes. The assistant software constantly receives images captured by a camera and analyzes them. If and only if a personis detected, an alarm is activated and the homeowner is notified aboutthe possible danger. This notification is done with the help of a mobile application, in which the user can check the systems’ current state and also control it. A demo can be found in https://youtu.be/b_f2JWnbJsk .
+We introduce the Smart Home Security Assistant (HOSA), which uses image recognition AI models to detect the presence ofintruders in the users’ homes. The assistant software constantly receives images captured by a camera and analyzes them. If and only if a personis detected, an alarm is activated and the homeowner is notified aboutthe possible danger. This notification is done with the help of a mobile application, in which the user can check the systems’ current state and also control it. A demo can be found in https://youtu.be/b_f2JWnbJsk .
 
 We describe now the recipe of how to use HOSA.
 
