@@ -263,6 +263,7 @@ For the management of the elements and the connections between them, we used the
     event_2= <buzzer_commands_sensor_ID>
     )]
     ```
+
   </details>
 
 * #### **Rule Definitions**: 
