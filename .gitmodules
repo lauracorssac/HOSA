@@ -1,0 +1,3 @@
+[submodule "HOSA-iOS"]
+	path = HOSA-iOS
+	url = https://github.com/lauracorssac/HOSA-iOS.git
