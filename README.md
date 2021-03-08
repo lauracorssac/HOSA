@@ -67,7 +67,7 @@ In order to allow the users to control HOSA and access its state, we built an iO
 
 ### 4. The MBP IoT Platform
 
-For the management of the elements and the connections between them, we used the MBP IoT platform. It is also a open-source platform, whose source code can be found in https://github.com/IPVS-AS/MBP . In the repository you can also found the tutorial of how to use it. After deploying the platform in your machine, creating an account and logging in, you must register the following components in the following order.
+For the management of the elements and the connections between them, we used the MBP IoT platform. It is also a open-source platform, whose source code can be found in [this repository](https://github.com/IPVS-AS/MBP). In the repository you can also found the tutorial of how to use it. After deploying the platform in your machine, creating an account and logging in, you must register the following components in the following order.
 		
 * ####  **Key Pairs**:
   In the _Key Pairs_ tab, register the pulic and private RSA key of your VM.
