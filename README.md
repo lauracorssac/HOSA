@@ -51,7 +51,7 @@ We created a server for handling all the requests related to the token generatio
 
 In order to allow the users to control HOSA and access its state, we built an iOS mobile application. Execute the following steps in order to use it.
 
-1. Clone the source repository to your machine - (LINK TO THE REPOSITORY)
+1. Clone the [source repository](https://github.com/lauracorssac/HOSA-iOS) to your machine
 2. In the file `DataManager.swift` change the variable `raspberryIP` to be the IP of your Raspberry Pi. Change `vmIP` to be the IP of your VM and `herokuPath` to be your heroku domain name.
 3. In order to allow the Universal Linking to take place, go to the `Signing and Capabilities` tab of your XCode project and in the `Associated Domains` capability, add something like the following:
 
