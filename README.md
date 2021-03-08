@@ -17,7 +17,7 @@ We describe now the recipe of how to use HOSA.
 
 ### Sofware
 
-- **1 Virtual Machine**
+- **1 Virtual Machine**;
 
 ### Accounts
 
