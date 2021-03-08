@@ -96,7 +96,7 @@ For the management of the elements and the connections between them, we used the
 
   2. In the `TokenValidationManager.py` file, change the value of the `YOUR_HEROKU_URL` variable to be the URL of your webserver hosted in Heroku;
 
-  3. In the `NotificationManager.py` file, change the value of the `HOST` variable to be the IP of your VM. Change the `BUNDLE_ID` and `TEAM_ID` to be the your's Apple Developer information. Both Bundle ID and Team ID can be found in the `Signing and Capabilities` tab in Xcode. Change the `APNS_KEY_ID` to be the Key ID generated in (XX). Change `APNS_AUTH_KEY_PATH` to be the full name of your key. Something like `AuthKey_4SVKWF123R.p8`. Change also the `DEVICE_TOKEN` variable to be the token of your iPhone. When you run the application, this value will be printed by the following function in your `AppDelegate.swift` file;
+  3. In the `NotificationManager.py` file, change the value of the `HOST` variable to be the IP of your VM. Change the `BUNDLE_ID` and `TEAM_ID` to be the your's Apple Developer information. Both Bundle ID and Team ID can be found in the `Signing and Capabilities` tab in Xcode. Change the `APNS_KEY_ID` to be the Key ID generated in section 3.4. Change `APNS_AUTH_KEY_PATH` to be the full name of your key. Something like `AuthKey_4SVKWF123R.p8`. Change also the `DEVICE_TOKEN` variable to be the token of your iPhone. When you run the application, this value will be printed by the following function in your `AppDelegate.swift` file;
 
     ```swift
     func application( _ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -106,7 +106,7 @@ For the management of the elements and the connections between them, we used the
     }
     ````
     
-  4. Place your `.p8` certificate (generated in xX) in this folder;
+  4. Place your `.p8` certificate generated in previously in this folder;
 
   5. Go back to MBP and register a new Operator. There will be a new form and in its _Operator scripts_ section, you must upload all the files inside _Buzzer Commands Operator_ folder.
 
