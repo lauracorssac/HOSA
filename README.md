@@ -285,3 +285,10 @@ In the _Rule Definitions_ tab, you must register the following two items.
   * For _Action_ select _Buzzer Action_
 
 </details> 
+
+## How to use
+
+  1. Go to the MBP platform and start all the five operators deployed.
+  2. For first use, generate a token. For that, execute the `FirstTokenManager.py` in your local machine. Copy the token printed in the terminal.
+  3. Update your heroku server by executing `git add .` -> `git commit -m "First token generation"` -> `git push heroku master`
+  4. Run the mobile application and paste the token in the _Token Validation_ screen.
