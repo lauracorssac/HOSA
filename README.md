@@ -43,7 +43,7 @@ We created a server for handling all the requests related to the token generatio
 - Go to the file `apple-app-site-association` and change the `appID` key's value to be team-ID.bundle-ID of your mobile application. It will be something as `"HXBS8U8294.johnAppleseed.Hosa"`. Your team ID and Bundle Identifier you can find in the `Signing and Capabilities` tab of HOSA's mobile application. This step is necessary to enable the Universal Links.
 - Deploy it to Heroku with Git. You can follow the tutorial in https://devcenter.heroku.com/articles/git
 - If you execute `git remote -v` command in the terminal in the same folder, you should obtain something like 
-  `xxxxx    https://git.heroku.com/hidden-sea-1234.git (fetch)`
+  `https://git.heroku.com/hidden-sea-1234.git (fetch)`
   
   The part between the .com/ and .git is the ID of your server. In the following steps, we are going to need your Heroku's domain name, which is its ID followed by `.herokuapp.com`, such as `hidden-sea-1234.herokuapp.com`.
 
