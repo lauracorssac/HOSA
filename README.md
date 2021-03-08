@@ -29,12 +29,9 @@ We describe now the recipe of how to use HOSA.
 
 ### 1. Pre-Configurations
 
-1.1 - Connect the Buzzer to the Raspberry Pi in the logical port 15. For that, we used a shield.
-
-1.2 - Connect the Camera to the Raspberry Pi. For that, we used a Flexible Flat Cable.
-
-1.3 - Enable the Camera:
-`sudo raspi-config` -> Interfacing Options -> Camera -> Yes
+1. Connect the Buzzer to the Raspberry Pi in the logical port 15. For that, we used a shield;
+2. Connect the Camera to the Raspberry Pi. For that, we used a Flexible Flat Cable;
+3. Enable the Camera: `sudo raspi-config` -> Interfacing Options -> Camera -> Yes
 
 ### 2. The Heroku Platform
 
@@ -54,31 +51,31 @@ We created a server for handling all the requests related to the token generatio
 
 In order to allow the users to control HOSA and access its state, we built an iOS mobile application. Execute the following steps in order to use it.
 
-- 2.1. Clone the source repository to your machine - (LINK TO THE REPOSITORY)
+1. Clone the source repository to your machine - (LINK TO THE REPOSITORY)
+2. In the file `DataManager.swift` change the variable `raspberryIP` to be the IP of your Raspberry Pi. Change `vmIP` to be the IP of your VM and `herokuPath` to be your heroku domain name.
+3. In order to allow the Universal Linking to take place, go to the `Signing and Capabilities` tab of your XCode project and in the `Associated Domains` capability, add something like the following:
 
-- 2.2. In the file `DataManager.swift` change the variable `raspberryIP` to be the IP of your Raspberry Pi. Change `vmIP` to be the IP of your VM and `herokuPath` to be your heroku domain name.
-
-- 2.3. In order to allow the Universal Linking to take place, go to the `Signing and Capabilities` tab of your XCode project and in the `Associated Domains` capability, add something like the following:
-
-  `applinks:your-heroku-domain`
-
-  Note you must replace `your-heroku-domain` by your actual Heroku domain, which is something like `hidden-sea-1234.herokuapp.com`
+    `applinks:your-heroku-domain`
   
-- 2.4. Generate a `.p8` certificate to allow sending push notifications to a real device and also silent push notifications. To do so, head over to Apple Developer Member Center and log in. 
-  * There, go to Certificates, Identifiers & Profiles and then Keys. 
-  * Tap the plus button to generate a new key.
-  * Select Apple Push Notifications service (APNs) to enable it and name it something like "Push Notification Key".
-  * Then, continue and you will have your `.p8` certificate, which you can download to use it later. It will have a name like `AuthKey_4SVKWF123R.p8`. The 4SVKWF123R part of the file name is the Key ID. You’ll also need this. More information you can find in this tutorial: https://www.raywenderlich.com/11395893-push-notifications-tutorial-getting-started
+    Note you must replace `your-heroku-domain` by your actual Heroku domain, which is something like `hidden-sea-1234.herokuapp.com`
+	
+4. Generate a `.p8` certificate to allow sending push notifications to a real device and also silent push notifications. To do so, head over to Apple Developer Member Center and log in. 
+  	* There, go to Certificates, Identifiers & Profiles and then Keys. 
+  	* Tap the plus button to generate a new key.
+  	* Select Apple Push Notifications service (APNs) to enable it and name it something like "Push Notification Key".
+  	* Then, continue and you will have your `.p8` certificate, which you can download to use it later. It will have a name like `AuthKey_4SVKWF123R.p8`. The 4SVKWF123R part of the file name is the Key ID. You’ll also need this. More information you can find in this tutorial: https://www.raywenderlich.com/11395893-push-notifications-tutorial-getting-started
 
 ### 4. In the MBP IoT Platform
 
 For the management of the elements and the connections between them, we used the MBP IoT platform. It is also a open-source platform, whose source code can be found in https://github.com/IPVS-AS/MBP . In the repository you can also found the tutorial of how to use it. After deploying the platform in your machine, creating an account and logging in, you must register the following components in the following order.
-
-#### 2.1. **Key Pairs**:
+	
+  ####  **Key Pairs**:
 In the _Key Pairs_ tab, register the pulic and private RSA key of your VM.
-#### 2.2. **Devices**:
+
+####  **Devices**:
 In the _Devices_ tab, register your VM and your Rapspberry Pi. The VM must be linked to its key pair, which you just created. For the creation of the Raspberry Pi, this information don't need to be provided.
-#### 2.3. **Extraction/Control Operators**: 
+  
+#### **Extraction/Control Operators**: 
 In the _Extraction/Control Operators_ tab, we register the following five items. For all of them, the field "Parameters" should be left empty and the field "Unit" should have the value "No Unit".
 
 <details>
@@ -145,7 +142,7 @@ func application( _ application: UIApplication, didRegisterForRemoteNotification
 </details>
 
 
-#### 2.4. **Sensors:** 
+#### **Sensors:** 
 In the _Sensors_ tab, you must register the following three items.
 <details>
   <summary>Camera Sensor</summary>
@@ -175,7 +172,7 @@ In the _Sensors_ tab, you must register the following three items.
   * The _Device_ should be the VM
 </details>
 
-#### 2.5. **Actuators**: 
+#### **Actuators**: 
 In the _Actuators_ tab, you must register the following two items.
 
 <details>
@@ -198,10 +195,10 @@ In the _Actuators_ tab, you must register the following two items.
   * The _Device_ should be the Raspberry Pi
 </details>
 
-#### 2.6. **Rules**: 
+#### **Rules**: 
 The _Rules_ tab is divided in three sub-tabs:
 
-#### 2.6.1. **Rule Actions**: 
+#### **Rule Actions**: 
 
 In the _Rule Actions_ tab, you must register the following two items.
 
@@ -225,7 +222,7 @@ In the _Rule Actions_ tab, you must register the following two items.
   * For _suffix_ type "action"
 </details>
 
-#### 2.6.2. **Rule Conditions**: 
+#### **Rule Conditions**: 
 
 In the _Rule Conditions_ tab, you must register the following two items.
 
@@ -264,7 +261,7 @@ event_2= <buzzer_commands_sensor_ID>
 ```
 </details>
 
-#### 2.6.3. **Rule Definitions**: 
+#### **Rule Definitions**: 
 
 In the _Rule Definitions_ tab, you must register the following two items.
 
