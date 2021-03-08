@@ -37,11 +37,11 @@ We describe now the recipe of how to use HOSA.
 
 We created a server for handling all the requests related to the token generation feature. It is hosted in the cloud platform Heroku and enables the persistent storage of all tokens. We chose to use Heroku for the facility to deploy a webserver using HTTPS. This protocol is necessary for enabling Universal Links.
 
-- Create an account in https://www.heroku.com/ in case you don't have it yet;
-- Install Heroku in your local machine following the official guide in https://devcenter.heroku.com/articles/heroku-cli#download-and-install;
+- Create an account in [heroku website](https://www.heroku.com/) in case you don't have it yet;
+- Install Heroku in your local machine following the [official guide](https://devcenter.heroku.com/articles/heroku-cli#download-and-install);
 - Go to the location of `Authorization` folder of this repository in your local machine;
 - Go to the file `apple-app-site-association` and change the `appID` key's value to be team-ID.bundle-ID of your mobile application. It will be something as `"HXBS8U8294.johnAppleseed.Hosa"`. Your team ID and Bundle Identifier you can find in the `Signing and Capabilities` tab of HOSA's mobile application. This step is necessary to enable the Universal Links;
-- Deploy it to Heroku with Git. You can follow the tutorial in https://devcenter.heroku.com/articles/git;
+- Deploy it to Heroku with Git. You can follow [this tutorial](https://devcenter.heroku.com/articles/git);
 - If you execute `git remote -v` command in the terminal in the same folder, you should obtain something like 
   `https://git.heroku.com/hidden-sea-1234.git (fetch)`;
   
